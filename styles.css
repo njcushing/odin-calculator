@@ -1,0 +1,32 @@
+#main {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+}
+
+.button-container {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 418px;
+    gap: 6px;
+    align-self: center;
+}
+.button-container .calculator-button {
+    background-color: rgb(203, 249, 255);
+    border-radius: 16px;
+    width: 100px;
+    height: 60px;
+    font-size: 20px;
+    font-weight: bold;
+}
+.button-container .calculator-button.result {
+    background-color: lightgray;
+    width: 418px;
+    height: 80px;
+    font-size: 40px;
+    text-align: right;
+    padding: 12px;
+}
+.button-container .calculator-button.equals {
+    background-color: rgb(136, 225, 255);
+}
