@@ -13,8 +13,11 @@ let resultPanelNew = document.querySelector('.result .result-new');
 function buttonPressed(e) {
     let key;
     if(e.type === 'click'){ key = e.target.dataset.val; }
-    if(e.type === 'keydown'){ key = e.keyCode; }
-    console.log(e.keyCode);
+    if(e.type === 'keydown'){
+        const buttonMatch = document.querySelector(`.calculator-button[data-key="${e.keyCode}"]`);
+        if(!buttonMatch){ return; }
+        key = buttonMatch.getAttribute("data-val");
+    }
     switch(key) {
         case '0':
             if(numTwo.length == 0){ break; }
@@ -24,7 +27,7 @@ function buttonPressed(e) {
         case '4':
         case '5':
         case '6':
-        case '7': case '55':
+        case '7':
         case '8':
         case '9':
             if(equalsLast){ reset(); }

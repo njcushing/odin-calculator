@@ -36,7 +36,7 @@ body {
     padding: 4px 12px;
 }
 .button-container .calculator-button.decimal {
-    background-color: rgb(109, 219, 255);;
+    background-color: rgb(109, 219, 255);
 }
 .button-container .calculator-button.operator {
     background-color: rgb(151, 255, 125);
@@ -57,5 +57,6 @@ body {
 .button-container .result .result-stored {
     font-size: 24px;
     font-weight: bold;
+    max-width: 400px;
     color: rgb(78, 78, 78);
 }
