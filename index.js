@@ -5,12 +5,16 @@ let equalsLast = false;
 
 let buttonContainer = document.querySelectorAll('.calculator-button');
 buttonContainer.forEach(button => button.addEventListener('click', buttonPressed));
+window.addEventListener('keydown', buttonPressed);
 
 let resultPanelStored = document.querySelector('.result .result-stored');
 let resultPanelNew = document.querySelector('.result .result-new');
 
 function buttonPressed(e) {
-    let key = e.target.dataset.key;
+    let key;
+    if(e.type === 'click'){ key = e.target.dataset.val; }
+    if(e.type === 'keydown'){ key = e.keyCode; }
+    console.log(e.keyCode);
     switch(key) {
         case '0':
             if(numTwo.length == 0){ break; }
@@ -20,7 +24,7 @@ function buttonPressed(e) {
         case '4':
         case '5':
         case '6':
-        case '7':
+        case '7': case '55':
         case '8':
         case '9':
             if(equalsLast){ reset(); }
@@ -56,6 +60,7 @@ function operate(operator, override) {
             numOne = numTwo;
         } else {
             if(!equalsLast || override){
+                if(numTwo === ''){ numTwo = 0; }
                 let result = 0;
                 switch(lastOperator){
                     case '+': result = add(numOne, numTwo); break;
@@ -85,16 +90,42 @@ function multiply(numOne, numTwo) {
     return numOne * numTwo;
 }
 function divide(numOne, numTwo) {
+    if(+numTwo == 0){
+        alert("Trying to divide by 0? What good could possibly come of that?");
+        return numOne;
+    }
     return numOne / numTwo;
 }
 
 function updateDisplay() {
     if(equalsLast){
         resultPanelStored.textContent = '';
-        resultPanelNew.textContent = numOne;
+        
+        let numOneTemp = numOne.toString();
+        if(numOneTemp.includes('e')){
+            let eIndex = numOneTemp.indexOf('e');
+            let numOneTempLeft = numOneTemp.slice(0, Math.min(eIndex, 19 - (numOneTemp.length - eIndex)));
+            let numOneTempRight = numOneTemp.slice(eIndex, numOneTemp.length);
+            numOneTemp = numOneTempLeft + numOneTempRight;
+        } else {
+            numOneTemp = numOneTemp.slice(0, Math.min(19, numOneTemp.length));
+        }
+        resultPanelNew.textContent = numOneTemp;
     } else {
-        resultPanelStored.textContent = numOne;
-        resultPanelNew.textContent = numTwo;
+        let numOneTemp = numOne.toString();
+        if(numOneTemp.includes('e')){
+            let eIndex = numOneTemp.indexOf('e');
+            let numOneTempLeft = numOneTemp.slice(0, Math.min(eIndex, 32 - (numOneTemp.length - eIndex)));
+            let numOneTempRight = numOneTemp.slice(eIndex, numOneTemp.length);
+            numOneTemp = numOneTempLeft + numOneTempRight;
+        } else {
+            numOneTemp = numOneTemp.slice(0, Math.min(32, numOneTemp.length));
+        }
+        resultPanelStored.textContent = numOneTemp;
+        
+        let numTwoTemp = numTwo.toString();
+        numTwoTemp = numTwoTemp.slice(Math.max(0, numTwoTemp.length - 19), numTwoTemp.length);
+        resultPanelNew.textContent = numTwoTemp;
     }
     if(resultPanelNew.textContent === ''){ resultPanelNew.textContent = '0'; }
 }
