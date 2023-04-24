@@ -22,6 +22,12 @@ body {
     font-size: 20px;
     font-weight: bold;
 }
+.button-container .calculator-button:hover {
+    background-color: rgb(226, 252, 255);
+}
+.button-container .calculator-button:active {
+    background-color: rgb(143, 240, 253);
+}
 .button-container .result {
     display: flex;
     flex-direction: column;
@@ -38,21 +44,51 @@ body {
 .button-container .calculator-button.decimal {
     background-color: rgb(109, 219, 255);
 }
+.button-container .calculator-button.decimal:hover {
+    background-color: rgb(174, 235, 255);
+}
+.button-container .calculator-button.decimal:active {
+    background-color: rgb(49, 204, 255);
+}
 .button-container .calculator-button.operator {
     background-color: rgb(151, 255, 125);
 }
+.button-container .calculator-button.operator:hover {
+    background-color: rgb(216, 255, 206);
+}
+.button-container .calculator-button.operator:active {
+    background-color: rgb(113, 248, 79);
+}
 .button-container .calculator-button.equals {
     background-color: rgb(109, 219, 255);
+}
+.button-container .calculator-button.equals:hover {
+    background-color: rgb(174, 235, 255);
+}
+.button-container .calculator-button.equals:active {
+    background-color: rgb(49, 204, 255);
 }
 .button-container .calculator-button.clear {
     background-color: rgb(255, 214, 125);
     width: 206px;
     font-size: 30px;
 }
+.button-container .calculator-button.clear:hover {
+    background-color: rgb(255, 237, 197);
+}
+.button-container .calculator-button.clear:active {
+    background-color: rgb(255, 200, 82);
+}
 .button-container .calculator-button.delete {
     background-color: rgb(255, 166, 125);
     width: 206px;
     font-size: 30px;
+}
+.button-container .calculator-button.delete:hover {
+    background-color: rgb(255, 214, 195);
+}
+.button-container .calculator-button.delete:active {
+    background-color: rgb(248, 143, 94);
 }
 .button-container .result .result-stored {
     font-size: 24px;
