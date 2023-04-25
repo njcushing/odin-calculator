@@ -19,7 +19,7 @@ body {
     border-radius: 16px;
     width: 100px;
     height: 60px;
-    font-size: 20px;
+    font-size: 24px;
     font-weight: bold;
 }
 .button-container .calculator-button:hover {
